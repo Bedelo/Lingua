@@ -432,28 +432,28 @@ export default function HomeScreen() {
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
         <TouchableOpacity
-          style={[styles.recordButton, isRecording && styles.recordButtonActive]}
+          style={[styles.baseButton, styles.recordButton, isRecording && styles.recordButtonActive]}
           onPress={handleRecordingPress}
         >
-          <ThemedText style={styles.recordButtonText}>
+          <ThemedText style={styles.baseButtonText}>
             {isRecording ? '🛑 Arrêter' : '🎙️ Enregistrer'}
           </ThemedText>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.listButton}
+          style={[styles.baseButton, styles.listButton]}
           onPress={listSavedRecordings}
         >
-          <ThemedText style={styles.listButtonText}>
+          <ThemedText style={styles.baseButtonText}>
             📂 Voir les enregistrements ({savedRecordings.length})
           </ThemedText>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.backendButton}
+          style={[styles.baseButton, styles.backendButton]}
           onPress={openBackendView}
         >
-          <ThemedText style={styles.backendButtonText}>
+          <ThemedText style={styles.baseButtonText}>
             🌐 Accéder aux données backend
           </ThemedText>
         </TouchableOpacity>
@@ -541,47 +541,35 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     alignItems: 'center',
   },
-  recordButton: {
-    backgroundColor: '#007AFF',
+  // Style de base uniforme pour tous les boutons
+  baseButton: {
     paddingHorizontal: 32,
     paddingVertical: 16,
     borderRadius: 25,
-    marginTop: 20,
+    marginTop: 10,
+    minWidth: 250,
+    alignItems: 'center',
   },
-  recordButtonActive: {
-    backgroundColor: '#FF3B30',
-  },
-  recordButtonText: {
+  baseButtonText: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '600',
     textAlign: 'center',
   },
-  listButton: {
-    backgroundColor: '#34C759',
-    paddingHorizontal: 24,
-    paddingVertical: 12,
-    borderRadius: 20,
-    marginTop: 10,
+  // Bouton d'enregistrement - garde son comportement spécial
+  recordButton: {
+    backgroundColor: '#007AFF', // Bleu par défaut
+    marginTop: 20, // Un peu plus d'espace en haut
   },
-  listButtonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: '500',
-    textAlign: 'center',
+  recordButtonActive: {
+    backgroundColor: '#FF3B30', // Rouge quand il enregistre
+  },
+  // Autres boutons - couleur uniforme
+  listButton: {
+    backgroundColor: '#6C7B7F', // Gris uniforme
   },
   backendButton: {
-    backgroundColor: '#FF9500',
-    paddingHorizontal: 24,
-    paddingVertical: 12,
-    borderRadius: 20,
-    marginTop: 10,
-  },
-  backendButtonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: '500',
-    textAlign: 'center',
+    backgroundColor: '#6C7B7F', // Gris uniforme
   },
   recordingsList: {
     marginTop: 20,
